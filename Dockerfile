@@ -1,10 +1,10 @@
 FROM alpine:latest
 MAINTAINER Pika Do <pokido99@gmail.com>
 
-# Proxy settings if necessary 
-ENV http_proxy http://proxy:8080
-ENV https_proxy http://proxy:8080
-ENV no_proxy "127.0.0.1,localhost,.mydomain.com"
+# Proxy settings if necessary
+# ENV http_proxy=http://proxy:8080
+# ENV https_proxy=http://proxy:8080
+# ENV no_proxy="127.0.0.1,localhost,.mydomain.com"
 
 # Upgrade system
 RUN apk --no-cache upgrade
@@ -23,4 +23,3 @@ RUN sed -i 's/^\(LoadModule proxy_balancer.*\)/#\1/g' /etc/apache2/conf.d/proxy.
 
 # Define default command
 CMD ["httpd","-D","FOREGROUND"]
-EXPOSE 80
